@@ -127,8 +127,10 @@
 	<h1 style="font-size: 25px;text-align: center;margin-top: 30px;color: yellow;">Special Thanks to:<a
 			href="https://twitter.com/sleirsgoevy" style="color: #f31414;margin-left: 10px;">@sleirsgoevy</a><a
 			style="color: white;margin-left: 10px;">Leeful</a><a href="https://twitter.com/_AlAzif"
-			style="color: #f31414;margin-left: 10px;">@_AlAzif</a><a href="https://twitter.com/GamerHack93" style="color: #f31414;margin-left: 10px;">GamerHack</a>
-			<a style="color: white;margin-left: 10px;">and to all the developers involved in the scene.</a></h1>
+			style="color: #f31414;margin-left: 10px;">@_AlAzif</a><a href="https://twitter.com/GamerHack93"
+			style="color: #f31414;margin-left: 10px;">GamerHack</a>
+		<a style="color: white;margin-left: 10px;">and to all the developers involved in the scene.</a>
+	</h1>
 	<script>
 		for (var i = 40; i <= 79; i++) { var select = document.getElementById("tempC"); var option = document.createElement("OPTION"); select.options.add(option); option.text = i; option.value = i; }
 		tempC.value = 60;
@@ -156,19 +158,31 @@
 			document.getElementById("mods-section").style.display = "none";
 		}
 
-		function getScript(source, callback) { var gs = document.createElement('script'); gs.src = source; gs.onload = callback; gs.async = false; document.body.appendChild(gs); }
-		function loadScript2() { getScript("/res/js/pl_loader.js", function () { }); }
-		function loadScript1() { getScript(PLfile, function () { setTimeout(loadScript2, 500); }); }
+		function getScript(source) {
+			return new Promise((resolve, reject) => {
+				const script = document.createElement('script');
+				script.src = source;
+				script.onload = () => resolve(script);
+				script.onerror = () => reject(new Error(`Script load error for ${source}`));
+				document.body.appendChild(script);
+			});
+		}
+
+		async function loadScripts() {
+			await getScript(PLfile);
+			await getScript("/res/js/pl_loader.js");
+		}
 
 		if (localStorage.passcount == null) localStorage.passcount = 0;
 		window.passCounter.innerHTML = localStorage.passcount;
 		if (localStorage.failcount == null) localStorage.failcount = 0;
 		window.failCounter.innerHTML = localStorage.failcount;
 
-		function load_jb2() {
+		async function load_jb2() {
 			msgs.innerHTML = "Loading Jailbreak, Please Wait ...";
 			LoadedMSG = "Jailbreak Completed ✔";
-			function loadScript() { getScript("/res/js/jb2.js", function () { setTimeout(jailbreak2, 1500); }); } loadScript();
+			await getScript("/res/js/jb2.js");
+			setTimeout(jailbreak2, 1500);
 		}
 
 		function load_goldhen() {
@@ -199,293 +213,292 @@
 			setTimeout(jailbreak, 500);
 		}
 
-		function load_ftp() {
+		async function load_ftp() {
 			msgs.innerHTML = "Loading FTP ...";
-			LoadedMSG = "FTP Loaded ✔";
 			PLfile = "/res/bin/pl_FTP.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "FTP Loaded ✔";
 		}
 
-		function load_App2usb() {
+		async function load_App2usb() {
 			msgs.innerHTML = "Loading App2usb ...";
-			LoadedMSG = "App2usb Loaded ✔";
 			PLfile = "/res/bin/pl_App2usb.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "App2usb Loaded ✔";
 		}
 
-		function load_binloader() {
+		async function load_binloader() {
 			msgs.innerHTML = "Loading Bin Loader ...";
+			await getScript("/res/js/pl_loaderBL.js");
 			LoadedMSG = "Send Payload To Port 9021";
-			function loadScript() { getScript("/res/js/pl_loaderBL.js"); } loadScript();
 		}
 
-		function load_dumperG() {
+		async function load_dumperG() {
 			msgs.innerHTML = "Loading Dumper ...";
-			LoadedMSG = "Dumper Loaded ✔";
 			PLfile = "/res/bin/pl_DumperG.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "Dumper Loaded ✔";
 		}
 
-		function load_dumperU() {
+		async function load_dumperU() {
 			msgs.innerHTML = "Loading Dumper ...";
-			LoadedMSG = "Dumper Loaded ✔";
 			PLfile = "/res/bin/pl_DumperU.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "Dumper Loaded ✔";
 		}
 
-		function load_dumperGU() {
+		async function load_dumperGU() {
 			msgs.innerHTML = "Loading Dumper ...";
-			LoadedMSG = "Dumper Loaded ✔";
 			PLfile = "/res/bin/pl_DumperGU.bin";
-			loadScript1();
-		}
-
-		function load_dumperM() {
-			msgs.innerHTML = "Loading Dumper ...";
+			await loadScripts();
 			LoadedMSG = "Dumper Loaded ✔";
+		}
+
+		async function load_dumperM() {
+			msgs.innerHTML = "Loading Dumper ...";
 			PLfile = "/res/bin/pl_DumperM.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "Dumper Loaded ✔";
 		}
 
-		function load_enableUpdates() {
+		async function load_enableUpdates() {
 			msgs.innerHTML = "Enabling Updates ...";
-			LoadedMSG = "Enabled Updates ✔";
 			PLfile = "/res/bin/pl_UpdatesEnable.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "Enabled Updates ✔";
 		}
 
-		function load_disableUpdates() {
+		async function load_disableUpdates() {
 			msgs.innerHTML = "Disabling Updates ...";
-			LoadedMSG = "Disabled Updates ✔";
 			PLfile = "/res/bin/pl_UpdatesDisable.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "Disabled Updates ✔";
 		}
 
-		function load_DBbackup() {
+		async function load_DBbackup() {
 			msgs2.innerHTML = "Loading Database Backup ...";
-			LoadedMSG = "Database Backup Loaded ✔";
 			PLfile = "/res/bin/pl_DBbackup.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "Database Backup Loaded ✔";
 		}
-
-		function load_DBrestore() {
+		async function load_DBrestore() {
 			msgs2.innerHTML = "Loading Database Restore ...";
-			LoadedMSG = "Database Restore Loaded ✔";
 			PLfile = "/res/bin/pl_DBrestore.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "Database Restore Loaded ✔";
 		}
 
-		function load_SDbackup() {
+		async function load_SDbackup() {
 			msgs2.innerHTML = "Loading Save Data Backup ...";
-			LoadedMSG = "Save Data Backup Loaded ✔";
 			PLfile = "/res/bin/pl_SaveDataBackup.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "Save Data Backup Loaded ✔";
 		}
 
-		function load_SDrestore() {
+		async function load_SDrestore() {
 			msgs2.innerHTML = "Loading Save Data Restore ...";
-			LoadedMSG = "Save Data Restore Loaded ✔";
 			PLfile = "/res/bin/pl_SaveDataRestore.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "Save Data Restore Loaded ✔";
 		}
 
-		function load_AvatarBackup() {
+		async function load_AvatarBackup() {
 			msgs2.innerHTML = "Loading Avatar Backup ...";
-			LoadedMSG = "Avatar Backup Loaded ✔";
 			PLfile = "/res/bin/pl_LinuxUSB.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "Avatar Backup Loaded ✔";
 		}
 
-		function load_AvatarRestore() {
+		async function load_AvatarRestore() {
 			msgs2.innerHTML = "Loading Avatar Restore ...";
-			LoadedMSG = "Avatar Restore Loaded ✔";
 			PLfile = "/res/bin/pl_AvatarBackup.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "Avatar Restore Loaded ✔";
 		}
 
-		function load_TrophyBackup() {
+		async function load_TrophyBackup() {
 			msgs2.innerHTML = "Loading Trophy Backup ...";
-			LoadedMSG = "Trophy Backup Loaded ✔";
 			PLfile = "/res/bin/pl_TrophyBackup.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "Trophy Backup Loaded ✔";
 		}
 
-		function load_TrophyRestore() {
+		async function load_TrophyRestore() {
 			msgs2.innerHTML = "Loading Trophy Restore ...";
-			LoadedMSG = "Trophy Restore Loaded ✔";
 			PLfile = "/res/bin/pl_TrophyRestore.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "Trophy Restore Loaded ✔";
 		}
 
-		function load_HDDbackup() {
+		async function load_HDDbackup() {
 			msgs2.innerHTML = "Loading HDD Upgrade Backup ...";
-			LoadedMSG = "HDD Upgrade Backup Loaded ✔";
 			PLfile = "/res/bin/pl_HDD_Backup.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "HDD Upgrade Backup Loaded ✔";
 		}
 
-		function load_HDDrestore() {
+		async function load_HDDrestore() {
 			msgs2.innerHTML = "Loading HDD Upgrade Restore ...";
-			LoadedMSG = "HDD Upgrade Restore Loaded ✔";
 			PLfile = "/res/bin/pl_HDD_Restore.bin";
-			loadScript1();
-		}
-
-		function load_CacheBackup() {
+			await loadScripts();
+			LoadedMSG = "HDD Upgrade Restore Loaded ✔";
+		} async function load_CacheBackup() {
 			msgs2.innerHTML = "Loading Offline Cache Backup ...";
-			LoadedMSG = "Offline Cache Backup Loaded ✔";
 			PLfile = "/res/bin/pl_OfflineCacheBackup.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "Offline Cache Backup Loaded ✔";
 		}
 
-		function load_CacheRestore() {
+		async function load_CacheRestore() {
 			msgs2.innerHTML = "Loading Offline Cache Restore ...";
-			LoadedMSG = "Offline Cache Restore Loaded ✔";
 			PLfile = "/res/bin/pl_OfflineCacheRestore.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "Offline Cache Restore Loaded ✔";
 		}
 
-		function load_LinuxUSB() {
+		async function load_LinuxUSB() {
 			msgs.innerHTML = "Loading Linux Payload ...";
-			LoadedMSG = "Linux Payload Loaded ✔";
 			PLfile = "/res/bin/pl_AvatarRestore.bin";
-			loadScript1();
-		}
-
-		function load_LinuxBaikal() {
-			msgs.innerHTML = "Loading Linux Payload ...";
+			await loadScripts();
 			LoadedMSG = "Linux Payload Loaded ✔";
+		}
+
+		async function load_LinuxBaikal() {
+			msgs.innerHTML = "Loading Linux Payload ...";
 			PLfile = "/res/bin/pl_LinuxBaikal.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "Linux Payload Loaded ✔";
 		}
 
-		function load_historyBlocker() {
+		async function load_historyBlocker() {
 			msgs.innerHTML = "Loading History Blocker ...";
-			LoadedMSG = "History Blocker Loaded ✔";
 			PLfile = "/res/bin/pl_HistoryBlocker.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "History Blocker Loaded ✔";
 		}
 
-		function load_webrte() {
+		async function load_webrte() {
 			msgs.innerHTML = "Loading WebRTE ...";
-			LoadedMSG = "WebRTE Loaded ✔";
 			PLfile = "/res/bin/pl_WebRTE.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "WebRTE Loaded ✔";
 		}
 
-		function load_webact() {
+		async function load_webact() {
 			msgs.innerHTML = "Loading Web-Activator ...";
+			await getScript("/res/js/pl_loaderWeb.js");
+			await getScript("/res/js/payload.js");
 			LoadedMSG = "Web-Activator Loaded ✔";
-			function loadScript() { getScript("/res/js/pl_loaderWeb.js"); } loadScript();
-			function loadPLScript() { getScript("/res/js/payload.js"); } loadPLScript();
-		}
-		function preweb() {
-			function loadScript() { getScript("/res/js/frontend.js"); } loadScript();
 		}
 
-		function load_ps4debug() {
+		async function preweb() {
+			await getScript("/res/js/frontend.js");
+		}
+
+		async function load_ps4debug() {
 			msgs.innerHTML = "Loading PS4 Debug ...";
-			LoadedMSG = "PS4 Debug Loaded ✔";
 			PLfile = "/res/bin/pl_PS4Debug.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "PS4 Debug Loaded ✔";
 		}
 
-		function load_KernelDumper() {
+		async function load_KernelDumper() {
 			msgs.innerHTML = "Loading Kernel Dumper ...";
-			LoadedMSG = "Kernel Dumper Loaded ✔";
 			PLfile = "/res/bin/pl_KernelDumper.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "Kernel Dumper Loaded ✔";
 		}
 
-		function load_fwspoof() {
+		async function load_fwspoof() {
 			msgs.innerHTML = "Spoofing Firmware ...";
+			await getScript("/res/js/pl_loaderFW.js");
+			await getScript("/res/js/pl_FWspoof.js");
 			LoadedMSG = "Firmware Spoofed ✔";
-			function loadScript() { getScript("/res/js/pl_loaderFW.js"); } loadScript();
-			function loadPLScript() { getScript("/res/js/pl_FWspoof.js"); } loadPLScript();
 		}
 
-		function load_todex() {
+		async function load_todex() {
 			msgs.innerHTML = "Loading ToDex ...";
-			LoadedMSG = "ToDex Loaded ✔";
 			PLfile = "/res/bin/pl_ToDex.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "ToDex Loaded ✔";
 		}
 
-		function load_ArabicGuy100() {
+		async function load_ArabicGuy100() {
 			msgs3.innerHTML = "Loading Arabic Guy 1.00 ...";
-			LoadedMSG = "Arabic Guy 1.00 Loaded ✔";
 			PLfile = "/res/bin/pl_GTA_ArabicGuy100.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "Arabic Guy 1.00 Loaded ✔";
 		}
 
-		function load_ArabicGuy127() {
+		async function load_ArabicGuy127() {
 			msgs3.innerHTML = "Loading Arabic Guy 1.27 ...";
-			LoadedMSG = "Arabic Guy 1.27 Loaded ✔";
 			PLfile = "/res/bin/pl_GTA_ArabicGuy127.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "Arabic Guy 1.27 Loaded ✔";
 		}
 
-		function load_ArabicGuy132() {
+		async function load_ArabicGuy132() {
 			msgs3.innerHTML = "Loading Arabic Guy 1.32 ...";
-			LoadedMSG = "Arabic Guy 1.32 Loaded ✔";
 			PLfile = "/res/bin/pl_GTA_ArabicGuy132.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "Arabic Guy 1.32 Loaded ✔";
 		}
 
-		function load_Lamance() {
+		async function load_Lamance() {
 			msgs3.innerHTML = "Loading Lamance v0.9 ...";
-			LoadedMSG = "Lamance v0.9 Loaded ✔";
 			PLfile = "/res/bin/pl_GTA_Lamance-v0.9-1.38.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "Lamance v0.9 Loaded ✔";
 		}
 
-		function load_Oysters100() {
+		async function load_Oysters100() {
 			msgs3.innerHTML = "Loading Oysters Menu v1.00 ...";
-			LoadedMSG = "Oysters Menu 1.00 Loaded ✔";
 			PLfile = "/res/bin/OystersMenu-v1.3.8-v1.00.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "Oysters Menu v1.00 Loaded ✔";
 		}
 
-		function load_Oysters113() {
+		async function load_Oysters113() {
 			msgs3.innerHTML = "Loading Oysters Menu v1.13 ...";
-			LoadedMSG = "Oysters Menu 1.13 Loaded ✔";
 			PLfile = "/res/bin/OystersMenu-v1.3.8-v1.13.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "Oysters Menu v1.13 Loaded ✔";
 		}
 
-		function load_Oysters119() {
+		async function load_Oysters119() {
 			msgs3.innerHTML = "Loading Oysters Menu v1.19 ...";
-			LoadedMSG = "Oysters Menu 1.19 Loaded ✔";
 			PLfile = "/res/bin/OystersMenu-v1.3.8-v1.19.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "Oysters Menu v1.19 Loaded ✔";
 		}
 
-		function load_Oysters124() {
+		async function load_Oysters124() {
 			msgs3.innerHTML = "Loading Oysters Menu v1.24 ...";
-			LoadedMSG = "Oysters Menu 1.24 Loaded ✔";
 			PLfile = "/res/bin/OystersMenu-v1.3.8-v1.24.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "Oysters Menu v1.24 Loaded ✔";
 		}
 
-		function load_Oysters129() {
+		async function load_Oysters129() {
 			msgs3.innerHTML = "Loading Oysters Menu v1.29 ...";
-			LoadedMSG = "Oysters Menu 1.29 Loaded ✔";
 			PLfile = "/res/bin/OystersMenu-v1.3.8-v1.29.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "Oysters Menu v1.29 Loaded ✔";
 		}
 
-		function load_orbistlbox() {
+		async function load_orbistlbox() {
 			msgs.innerHTML = "Loading Orbis-Toolbox ...";
-			LoadedMSG = "Orbis-Toolbox Loaded ✔";
 			PLfile = "/res/bin/pl_Orbis-Toolbox-672.bin";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "Orbis-Toolbox Loaded ✔";
 		}
 
-		function load_fanthresh() {
+		async function load_fanthresh() {
 			msgs.innerHTML = "Loading Fan Threshold ...";
-			LoadedMSG = "Fan Threshold Loaded ✔"; fanTemp = tempC.value;
+			fanTemp = tempC.value;
 			PLfile = "/res/js/pl_FanThresh.js";
-			loadScript1();
+			await loadScripts();
+			LoadedMSG = "Fan Threshold Loaded ✔";
 		}
 	</script>
 </body>
