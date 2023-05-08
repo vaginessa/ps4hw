@@ -178,7 +178,7 @@
 			});
 		}
 
-		async function loadScripts() {
+		async function loadScript() {
 			await getScript(PLfile);
 			await getScript("/res/js/pl_loader.js");
 		}
@@ -226,14 +226,14 @@
 		async function load_ftp() {
 			msgs.innerHTML = "Loading FTP ...";
 			PLfile = "/res/bin/pl_FTP.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "FTP Loaded ✔";
 		}
 
 		async function load_App2usb() {
 			msgs.innerHTML = "Loading App2usb ...";
 			PLfile = "/res/bin/pl_App2usb.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "App2usb Loaded ✔";
 		}
 
@@ -246,151 +246,151 @@
 		async function load_dumperG() {
 			msgs.innerHTML = "Loading Dumper ...";
 			PLfile = "/res/bin/pl_DumperG.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "Dumper Loaded ✔";
 		}
 
 		async function load_dumperU() {
 			msgs.innerHTML = "Loading Dumper ...";
 			PLfile = "/res/bin/pl_DumperU.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "Dumper Loaded ✔";
 		}
 
 		async function load_dumperGU() {
 			msgs.innerHTML = "Loading Dumper ...";
 			PLfile = "/res/bin/pl_DumperGU.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "Dumper Loaded ✔";
 		}
 
 		async function load_dumperM() {
 			msgs.innerHTML = "Loading Dumper ...";
 			PLfile = "/res/bin/pl_DumperM.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "Dumper Loaded ✔";
 		}
 
 		async function load_enableUpdates() {
 			msgs.innerHTML = "Enabling Updates ...";
 			PLfile = "/res/bin/pl_UpdatesEnable.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "Enabled Updates ✔";
 		}
 
 		async function load_disableUpdates() {
 			msgs.innerHTML = "Disabling Updates ...";
 			PLfile = "/res/bin/pl_UpdatesDisable.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "Disabled Updates ✔";
 		}
 
 		async function load_DBbackup() {
 			msgs2.innerHTML = "Loading Database Backup ...";
 			PLfile = "/res/bin/pl_DBbackup.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "Database Backup Loaded ✔";
 		}
 		async function load_DBrestore() {
 			msgs2.innerHTML = "Loading Database Restore ...";
 			PLfile = "/res/bin/pl_DBrestore.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "Database Restore Loaded ✔";
 		}
 
 		async function load_SDbackup() {
 			msgs2.innerHTML = "Loading Save Data Backup ...";
 			PLfile = "/res/bin/pl_SaveDataBackup.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "Save Data Backup Loaded ✔";
 		}
 
 		async function load_SDrestore() {
 			msgs2.innerHTML = "Loading Save Data Restore ...";
 			PLfile = "/res/bin/pl_SaveDataRestore.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "Save Data Restore Loaded ✔";
 		}
 
 		async function load_AvatarBackup() {
 			msgs2.innerHTML = "Loading Avatar Backup ...";
 			PLfile = "/res/bin/pl_LinuxUSB.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "Avatar Backup Loaded ✔";
 		}
 
 		async function load_AvatarRestore() {
 			msgs2.innerHTML = "Loading Avatar Restore ...";
 			PLfile = "/res/bin/pl_AvatarBackup.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "Avatar Restore Loaded ✔";
 		}
 
 		async function load_TrophyBackup() {
 			msgs2.innerHTML = "Loading Trophy Backup ...";
 			PLfile = "/res/bin/pl_TrophyBackup.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "Trophy Backup Loaded ✔";
 		}
 
 		async function load_TrophyRestore() {
 			msgs2.innerHTML = "Loading Trophy Restore ...";
 			PLfile = "/res/bin/pl_TrophyRestore.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "Trophy Restore Loaded ✔";
 		}
 
 		async function load_HDDbackup() {
 			msgs2.innerHTML = "Loading HDD Upgrade Backup ...";
 			PLfile = "/res/bin/pl_HDD_Backup.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "HDD Upgrade Backup Loaded ✔";
 		}
 
 		async function load_HDDrestore() {
 			msgs2.innerHTML = "Loading HDD Upgrade Restore ...";
 			PLfile = "/res/bin/pl_HDD_Restore.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "HDD Upgrade Restore Loaded ✔";
 		} async function load_CacheBackup() {
 			msgs2.innerHTML = "Loading Offline Cache Backup ...";
 			PLfile = "/res/bin/pl_OfflineCacheBackup.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "Offline Cache Backup Loaded ✔";
 		}
 
 		async function load_CacheRestore() {
 			msgs2.innerHTML = "Loading Offline Cache Restore ...";
 			PLfile = "/res/bin/pl_OfflineCacheRestore.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "Offline Cache Restore Loaded ✔";
 		}
 
 		async function load_LinuxUSB() {
 			msgs.innerHTML = "Loading Linux Payload ...";
 			PLfile = "/res/bin/pl_AvatarRestore.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "Linux Payload Loaded ✔";
 		}
 
 		async function load_LinuxBaikal() {
 			msgs.innerHTML = "Loading Linux Payload ...";
 			PLfile = "/res/bin/pl_LinuxBaikal.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "Linux Payload Loaded ✔";
 		}
 
 		async function load_historyBlocker() {
 			msgs.innerHTML = "Loading History Blocker ...";
 			PLfile = "/res/bin/pl_HistoryBlocker.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "History Blocker Loaded ✔";
 		}
 
 		async function load_webrte() {
 			msgs.innerHTML = "Loading WebRTE ...";
 			PLfile = "/res/bin/pl_WebRTE.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "WebRTE Loaded ✔";
 		}
 
@@ -408,14 +408,14 @@
 		async function load_ps4debug() {
 			msgs.innerHTML = "Loading PS4 Debug ...";
 			PLfile = "/res/bin/pl_PS4Debug.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "PS4 Debug Loaded ✔";
 		}
 
 		async function load_KernelDumper() {
 			msgs.innerHTML = "Loading Kernel Dumper ...";
 			PLfile = "/res/bin/pl_KernelDumper.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "Kernel Dumper Loaded ✔";
 		}
 
@@ -429,77 +429,77 @@
 		async function load_todex() {
 			msgs.innerHTML = "Loading ToDex ...";
 			PLfile = "/res/bin/pl_ToDex.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "ToDex Loaded ✔";
 		}
 
 		async function load_ArabicGuy100() {
 			msgs3.innerHTML = "Loading Arabic Guy 1.00 ...";
 			PLfile = "/res/bin/pl_GTA_ArabicGuy100.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "Arabic Guy 1.00 Loaded ✔";
 		}
 
 		async function load_ArabicGuy127() {
 			msgs3.innerHTML = "Loading Arabic Guy 1.27 ...";
 			PLfile = "/res/bin/pl_GTA_ArabicGuy127.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "Arabic Guy 1.27 Loaded ✔";
 		}
 
 		async function load_ArabicGuy132() {
 			msgs3.innerHTML = "Loading Arabic Guy 1.32 ...";
 			PLfile = "/res/bin/pl_GTA_ArabicGuy132.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "Arabic Guy 1.32 Loaded ✔";
 		}
 
 		async function load_Lamance() {
 			msgs3.innerHTML = "Loading Lamance v0.9 ...";
 			PLfile = "/res/bin/pl_GTA_Lamance-v0.9-1.38.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "Lamance v0.9 Loaded ✔";
 		}
 
 		async function load_Oysters100() {
 			msgs3.innerHTML = "Loading Oysters Menu v1.00 ...";
 			PLfile = "/res/bin/OystersMenu-v1.3.8-v1.00.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "Oysters Menu v1.00 Loaded ✔";
 		}
 
 		async function load_Oysters113() {
 			msgs3.innerHTML = "Loading Oysters Menu v1.13 ...";
 			PLfile = "/res/bin/OystersMenu-v1.3.8-v1.13.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "Oysters Menu v1.13 Loaded ✔";
 		}
 
 		async function load_Oysters119() {
 			msgs3.innerHTML = "Loading Oysters Menu v1.19 ...";
 			PLfile = "/res/bin/OystersMenu-v1.3.8-v1.19.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "Oysters Menu v1.19 Loaded ✔";
 		}
 
 		async function load_Oysters124() {
 			msgs3.innerHTML = "Loading Oysters Menu v1.24 ...";
 			PLfile = "/res/bin/OystersMenu-v1.3.8-v1.24.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "Oysters Menu v1.24 Loaded ✔";
 		}
 
 		async function load_Oysters129() {
 			msgs3.innerHTML = "Loading Oysters Menu v1.29 ...";
 			PLfile = "/res/bin/OystersMenu-v1.3.8-v1.29.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "Oysters Menu v1.29 Loaded ✔";
 		}
 
 		async function load_orbistlbox() {
 			msgs.innerHTML = "Loading Orbis-Toolbox ...";
 			PLfile = "/res/bin/pl_Orbis-Toolbox-672.bin";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "Orbis-Toolbox Loaded ✔";
 		}
 
@@ -507,7 +507,7 @@
 			msgs.innerHTML = "Loading Fan Threshold ...";
 			fanTemp = tempC.value;
 			PLfile = "/res/js/pl_FanThresh.js";
-			await loadScripts();
+			await loadScript();
 			LoadedMSG = "Fan Threshold Loaded ✔";
 		}
 	</script>
